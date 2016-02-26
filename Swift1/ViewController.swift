@@ -3,7 +3,7 @@
 //  Swift1
 //
 //  Created by 符现超 on 15/10/13.
-//  Copyright © 2015年 ZD. All rights reserved.
+//  Copyright © 2015年 Zero.D.Saber. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        setupButton()
+        
         stringStudy()
         
         arrayAndDictionaryStudy()
@@ -39,6 +41,19 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // MARK: -- UI lifecycle
+    func setupButton() {
+        let button: UIButton = UIButton(type: .ContactAdd)
+        button.frame = CGRectMake(10, 150, 100, 30)
+        button.setTitle("跳转", forState: .Normal)
+        button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    func pushToNextController(button: UIButton) {
+        self.navigationController?.pushViewController(SecondViewController(), animated: true)
     }
     
 ///////////=================================================
@@ -81,8 +96,11 @@ class ViewController: UIViewController {
             print("\(indexString[index])", terminator:"")
             //print("\(indexString[index])", separator: "fu", terminator: "")
         }
-        #endif
-
+#else
+    // 等价于oc中的NSStringFromClass
+    let className = String(UIViewController)
+    print(className)
+#endif
         
     }
 

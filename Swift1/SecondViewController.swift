@@ -3,7 +3,7 @@
 //  Swift1
 //
 //  Created by 符现超 on 15/11/19.
-//  Copyright © 2015年 ZD. All rights reserved.
+//  Copyright © 2015年 Zero.D.Saber. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor.redColor()
         // Do any additional setup after loading the view.
     }
 
