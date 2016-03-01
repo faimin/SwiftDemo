@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     // MARK: -- UI lifecycle
     func setupButton() {
         let button: UIButton = UIButton(type: .ContactAdd)
-        button.frame = CGRectMake(10, 150, 100, 30)
+        button.frame = CGRect(x: 10, y: 150, width: 100, height: 30) 
         button.setTitle("跳转", forState: .Normal)
         button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
