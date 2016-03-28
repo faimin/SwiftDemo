@@ -48,7 +48,8 @@ class ViewController: UIViewController {
         let button: UIButton = UIButton(type: .ContactAdd)
         button.frame = CGRect(x: 10, y: 150, width: 100, height: 30) 
         button.setTitle("跳转", forState: .Normal)
-        button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(ViewController.pushToNextController(_:)), forControlEvents: .TouchUpInside)
+        //button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
     }
     
@@ -109,8 +110,8 @@ class ViewController: UIViewController {
         _ = ["0", "1", "2", "3", "4"]
         var shoppingListDic: Dictionary? = ["count" : 10]
 
-        var option: String? = "hello"
-        var optionName: String? = nil//"John Appleseed"
+        let option: String? = "hello"
+        let optionName: String? = nil//"John Appleseed"
         var greenting = "1314"
         //optionName = nil时,此行判断不成立,进入else
         if let name = optionName {
