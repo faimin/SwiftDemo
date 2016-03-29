@@ -14,7 +14,7 @@ class TableController: UIViewController ,UITableViewDataSource, UITableViewDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.view.backgroundColor = UIColor.brownColor();
         setupTableView()
     }
 
@@ -31,11 +31,12 @@ class TableController: UIViewController ,UITableViewDataSource, UITableViewDeleg
         self.view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        let left = NSLayoutConstraint.init(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0)
-        let right = NSLayoutConstraint.init(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint.init(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint.init(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0)
-        tableView.addConstraints([left, right, top, bottom])
+        let left = NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 0)
+        let right = NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0)
+        
+        self.view.addConstraints([left, right, top, bottom])
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,8 +49,8 @@ class TableController: UIViewController ,UITableViewDataSource, UITableViewDeleg
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = "hello world！"
-        cell.backgroundColor = UIColor.redColor()
+        cell.textLabel!.text = "hello world！"
+        cell.contentView.backgroundColor = UIColor.cyanColor()
         return cell
     }
     
