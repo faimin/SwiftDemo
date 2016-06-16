@@ -44,6 +44,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: -- UI lifecycle
+    // 正确设置frame： http://swift.gg/2016/06/16/swift-cgrect-cgsize-cgpoint/
     func setupButton() {
         let button: UIButton = UIButton(type: .ContactAdd)
         button.frame = CGRect(x: 10, y: 150, width: 100, height: 30) 

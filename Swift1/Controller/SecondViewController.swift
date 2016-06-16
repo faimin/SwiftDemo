@@ -26,6 +26,7 @@ class SecondViewController: UIViewController {
     private func setupButton() -> Void {
         let button: UIButton = UIButton(type: .DetailDisclosure)
         button.frame = CGRect(x: 50, y: 150, width: 100, height: 30)
+        button.frame = cgrect
         button.titleLabel?.text = "show tableView"
         button.addTarget(self, action: #selector(showTableView), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)

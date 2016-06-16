@@ -10,3 +10,8 @@ var newArr = arr
 arr[0] = 1
 print(arr)
 print(newArr)
+
+let myView = UIView()
+myView.backgroundColor = UIColor.brownColor()
+myView.frame = CGRect.zero
+myView.frame = CGRect(x: 20.0, y: 20.0, width: 100.0, height: 100.0)
