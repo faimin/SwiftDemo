@@ -12,7 +12,7 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.redColor()
+        self.view.backgroundColor = UIColor.red
         // Do any additional setup after loading the view.
         
         setupButton()
@@ -24,11 +24,10 @@ class SecondViewController: UIViewController {
     }
     
     private func setupButton() -> Void {
-        let button: UIButton = UIButton(type: .DetailDisclosure)
+        let button: UIButton = UIButton(type: .detailDisclosure)
         button.frame = CGRect(x: 50, y: 150, width: 100, height: 30)
-        button.frame = cgrect
         button.titleLabel?.text = "show tableView"
-        button.addTarget(self, action: #selector(showTableView), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(showTableView), for: .touchUpInside)
         self.view.addSubview(button)
         
     }

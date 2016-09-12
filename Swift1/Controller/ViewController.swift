@@ -29,7 +29,8 @@ class ViewController: UIViewController {
         
         var someInt = 3
         var anotherInt = 107
-        swapTwoInts(&someInt, &anotherInt)
+        // MARK: 怎么改?
+        //swapTwoInts(&someInt, &anotherInt)
         print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
         
     }
@@ -39,17 +40,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
     // MARK: -- UI lifecycle
     // 正确设置frame： http://swift.gg/2016/06/16/swift-cgrect-cgsize-cgpoint/
     func setupButton() {
-        let button: UIButton = UIButton(type: .ContactAdd)
-        button.frame = CGRect(x: 10, y: 150, width: 100, height: 30) 
-        button.setTitle("跳转", forState: .Normal)
-        button.addTarget(self, action: #selector(ViewController.pushToNextController(_:)), forControlEvents: .TouchUpInside)
+        let button: UIButton = UIButton(type: .contactAdd)
+        button.frame = CGRect(x: 10, y: 150, width: 100, height: 30)
+        button.setTitle("跳转", for: .normal)
+        button.addTarget(self, action: #selector(ViewController.pushToNextController(button:)), for: .touchUpInside)
         //button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
     }
@@ -100,7 +101,7 @@ class ViewController: UIViewController {
         }
 #else
     // 等价于oc中的NSStringFromClass
-    let className = String(UIViewController)
+    let className = String(describing: UIViewController())
     print(className)
 #endif
         
@@ -135,9 +136,9 @@ class ViewController: UIViewController {
         //等价于
         str1 = (str2 != nil) ? str2! : "swift"
         
-        var i = 1
+        let i = 1
         for _ in 1...10 {
-            print(i++)
+            print(i+1)
         }
     }
     
@@ -161,7 +162,7 @@ class ViewController: UIViewController {
     
     ///someInt 和 anotherInt 在传入 swapTwoInts(_:_:) 函数前，都加了 & 的前缀
     ///你只能传递变量给输入输出参数。你不能传入常量或者字面量（literal value），因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加&符，表示这个值可以被函数修改。
-    func swapTwoInts(inout a: Int, inout _ b: Int) {
+    func swapTwoInts( a: inout Int, _ b: inout Int) {
         let temporaryA = a
         a = b
         b = temporaryA
@@ -172,7 +173,7 @@ class ViewController: UIViewController {
     //MARK:闭包
     func block() {
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
-        var reverd = names.sort({(s1: String, s2: String) -> Bool in
+        _ = names.sorted(by: {(s1: String, s2: String) -> Bool in
             return s1 > s2
         })
         
