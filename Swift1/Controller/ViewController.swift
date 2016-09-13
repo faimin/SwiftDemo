@@ -27,9 +27,8 @@ class ViewController: UIViewController {
         let personCount = someFunction1(allPerson: 100, total: "人")//someFunction1(100, secondParamterName: "人")
         print(personCount)
         
-        var someInt = 3
-        var anotherInt = 107
-        // MARK: 怎么改?
+        let someInt = 3
+        let anotherInt = 107
         //swapTwoInts(&someInt, &anotherInt)
         print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
         
@@ -110,7 +109,8 @@ class ViewController: UIViewController {
     //MARK:Array && Dictionary字典和数组
     func arrayAndDictionaryStudy() {
         _ = ["0", "1", "2", "3", "4"]
-        var shoppingListDic: Dictionary? = ["count" : 10]
+        //var shoppingListDic: Dictionary = ["count" : 10]
+        _ = ["count" : 10]
 
         let option: String? = "hello"
         let optionName: String? = nil//"John Appleseed"
