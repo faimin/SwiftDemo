@@ -9,6 +9,10 @@
 import UIKit
 import Foundation
 
+// http://swift.gg/2016/04/20/selector-and-the-responder-chain/
+private extension Selector {
+    static let pushToNextVC = #selector(ViewController.pushToNextController(button:))
+}
 
 class ViewController: UIViewController {
 
@@ -43,14 +47,15 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    // MARK: -- UI lifecycle
+    // MARK: -- UI LifeCycle
     // 正确设置frame： http://swift.gg/2016/06/16/swift-cgrect-cgsize-cgpoint/
     func setupButton() {
         let button: UIButton = UIButton(type: .contactAdd)
         button.frame = CGRect(x: 10, y: 150, width: 100, height: 30)
         button.setTitle("跳转", for: .normal)
-        button.addTarget(self, action: #selector(ViewController.pushToNextController(button:)), for: .touchUpInside)
         //button.addTarget(self, action: Selector("pushToNextController:"), forControlEvents: .TouchUpInside)
+        //button.addTarget(self, action: #selector(ViewController.pushToNextController(button:)), for: .touchUpInside)
+        button.addTarget(self, action: .pushToNextVC, for: .touchUpInside)
         self.view.addSubview(button)
     }
     
@@ -124,6 +129,14 @@ class ViewController: UIViewController {
             greenting = "hello,\(option)"
             print(greenting)
         }
+        
+        /// 在swift3之前，数值或者结构体类型可以用`AnyObject`接收，它会把数值了类型给包装成对象类型
+        /// 但是从swift3开始，这样写会出现编译错误，swift应该是不帮我们做这些处理了，需要我们把泛型类型改成`Any`；
+        /** 错误写法：
+         var mutArr = [AnyObject]()
+        */
+        var mutArr = [Any]()
+        mutArr.append(2)
         
     }
     
