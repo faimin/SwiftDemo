@@ -11,15 +11,19 @@ import Foundation
 
 // http://swift.gg/2016/04/20/selector-and-the-responder-chain/
 private extension Selector {
-    static let pushToNextVC = #selector(ViewController.pushToNextController(button:))
+    static let pushToNextVC = #selector(FirstViewController.pushToNextController(button:))
 }
 
-class ViewController: UIViewController {
-
+class FirstViewController: UIViewController {
+    
+    deinit {
+        print("析构函数")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         setupButton()
         
         stringStudy()
