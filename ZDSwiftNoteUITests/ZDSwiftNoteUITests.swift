@@ -1,14 +1,14 @@
 //
-//  Swift1UITests.swift
-//  Swift1UITests
+//  ZDSwiftNoteUITests.swift
+//  ZDSwiftNoteUITests
 //
-//  Created by 符现超 on 15/10/13.
-//  Copyright © 2015年 ZD. All rights reserved.
+//  Created by 符现超 on 2016/10/27.
+//  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
 import XCTest
 
-class Swift1UITests: XCTestCase {
+class ZDSwiftNoteUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

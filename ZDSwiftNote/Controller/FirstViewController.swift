@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  Swift1
+//  ZDSwiftNote
 //
-//  Created by 符现超 on 15/10/13.
-//  Copyright © 2015年 Zero.D.Saber. All rights reserved.
+//  Created by 符现超 on 2016/10/27.
+//  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
 import UIKit
@@ -145,6 +145,7 @@ class FirstViewController: UIViewController {
     }
     
     //MARK:运算符
+    /// 运算符
     func oerators() {
         //http://www.tuicool.com/articles/2u2Qzu2
         var str1: String

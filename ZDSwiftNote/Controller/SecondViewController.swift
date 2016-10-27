@@ -1,9 +1,9 @@
 //
-//  SecondViewController.swift
-//  Swift1
+//  SecondViewController
+//  ZDSwiftNote
 //
-//  Created by 符现超 on 15/11/19.
-//  Copyright © 2015年 Zero.D.Saber. All rights reserved.
+//  Created by 符现超 on 2016/10/27.
+//  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
 import UIKit

@@ -1,15 +1,15 @@
 //
-//  Swift1Tests.swift
-//  Swift1Tests
+//  ZDSwiftNoteTests.swift
+//  ZDSwiftNoteTests
 //
-//  Created by 符现超 on 15/10/13.
-//  Copyright © 2015年 ZD. All rights reserved.
+//  Created by 符现超 on 2016/10/27.
+//  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
 import XCTest
-@testable import Swift1
+@testable import ZDSwiftNote
 
-class Swift1Tests: XCTestCase {
+class ZDSwiftNoteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ class Swift1Tests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

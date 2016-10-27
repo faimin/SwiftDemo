@@ -7,10 +7,11 @@ var str = "Hello, playground"
 /// Array是struct类型，即值类型。class是引用类型
 /// 值类型会自动执行 copy 操作
 var arr = [0, 0, 0]
-var newArr = arr
+let newArr = arr
 arr[0] = 1
 print(arr)
 print(newArr)
+let createArray: Array = [Any](repeatElement("10", count: 5))
 /// 获取实例的类型
 let _type = type(of: arr)
 let name = String(describing: UIView())
