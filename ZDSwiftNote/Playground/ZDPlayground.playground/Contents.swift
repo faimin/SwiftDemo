@@ -27,4 +27,13 @@ superView.backgroundColor = UIColor.red
 superView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
 superView.addSubview(myView)
 
+/// 
+class User {
+    private var name = "private name"
+}
 
+extension User {
+    var accessPrivate: String {
+        return name
+    }
+}

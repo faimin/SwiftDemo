@@ -23,7 +23,7 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func setupButton() -> Void {
+    public func setupButton() -> Void {
         let button: UIButton = UIButton(type: .detailDisclosure)
         button.frame = CGRect(x: 50, y: 150, width: 100, height: 30)
         button.titleLabel?.text = "show tableView"

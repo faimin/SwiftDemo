@@ -212,7 +212,7 @@ class FirstViewController: UIViewController {
     /** guard 语法：
      guard condition else {
      statements
-     return
+     return or break
      }
      `guard`语句结构中的`else`不可缺失，在`else`子句中可以使用`return`, `break`,` continue`, `throw`, `fatalError()`等。
      当`guard`语句条件表达式不为`true`时执行`else`语句块中的代码。
@@ -222,6 +222,11 @@ class FirstViewController: UIViewController {
             print("当前是低于iOS10的系统版本")
             return
         }
+    }
+    
+    func zd_keyword() {
+        let secondVC = SecondViewController()
+        secondVC.setupButton()
     }
     
 }
