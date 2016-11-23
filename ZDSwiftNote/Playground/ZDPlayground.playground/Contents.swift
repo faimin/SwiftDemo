@@ -27,7 +27,15 @@ superView.backgroundColor = UIColor.red
 superView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
 superView.addSubview(myView)
 
-/// 
+// 求和闭包
+let sum: (Int, Int) -> (Int) = {
+    $0 + $1
+}
+let calculateSUM = sum(10, 11)
+print(calculateSUM)
+
+
+///
 class User {
     private var name = "private name"
 }

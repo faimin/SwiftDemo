@@ -160,8 +160,9 @@ class FirstViewController: UIViewController {
         }
     }
     
+    
     //MARK:方法
-    //方法与函数的区别： 方法是与某些特定类型相关联的函数。即方法就是函数，只是这个函数与某个类型相关联罢了
+    //方法与函数的区别：方法是与某些特定类型相关联的函数。即方法就是函数，只是这个函数与某个类型相关联罢了
     
     ///如果你提供了外部参数名，那么函数在被调用时，必须使用外部参数名
     ///方法默认只为第一个参数设置了局部参数名，没有外部参数名，所以在调用此方法时时看不到第一个参数的外部参数名的
@@ -186,16 +187,30 @@ class FirstViewController: UIViewController {
         b = temporaryA
     }
     
+    //MARK: 泛型
+    //打印数组中的元素
+    func printElementFromArray<T>(arr: [T]) {
+        for element in arr {
+            print(element)
+        }
+    }
     
     
     //MARK:闭包
     func block() {
+        // 排序
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
         _ = names.sorted(by: {(s1: String, s2: String) -> Bool in
             return s1 > s2
         })
         
+        // 求和闭包
+        let sum: (Int, Int) -> (Int) = { $0 + $1 }
+        let calculateSUM = sum(10, 11)
+        print(calculateSUM)
     }
+    
+    
     
     //MARK: 判断系统版本
     // http://swift.gg/2016/04/13/swift-qa-2016-04-13/
@@ -206,6 +221,7 @@ class FirstViewController: UIViewController {
             print("iOS9或者之前的系统")
         }
     }
+    
     
     //MARK: guard的使用
     /// https://github.com/sxyx2008/DevArticles/issues/131
