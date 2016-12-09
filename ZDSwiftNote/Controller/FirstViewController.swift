@@ -35,9 +35,9 @@ class FirstViewController: UIViewController {
         let personCount = someFunction1(allPerson: 100, total: "人")//someFunction1(100, secondParamterName: "人")
         print(personCount)
         
-        let someInt = 3
-        let anotherInt = 107
-        //swapTwoInts(&someInt, &anotherInt)
+        var someInt = 3
+        var anotherInt = 107
+        swapTwoInts(a: &someInt, b: &anotherInt)
         print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
         
     }
@@ -181,14 +181,15 @@ class FirstViewController: UIViewController {
     
     ///someInt 和 anotherInt 在传入 swapTwoInts(_:_:) 函数前，都加了 & 的前缀
     ///你只能传递变量给输入输出参数。你不能传入常量或者字面量（literal value），因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加&符，表示这个值可以被函数修改。
-    func swapTwoInts( a: inout Int, _ b: inout Int) {
+    func swapTwoInts( a: inout Int, b: inout Int) {
         let temporaryA = a
         a = b
         b = temporaryA
     }
     
+    
     //MARK: 泛型
-    //打印数组中的元素
+    //打印数组中的元素(不用判断其中的元素类型)
     func printElementFromArray<T>(arr: [T]) {
         for element in arr {
             print(element)
@@ -197,17 +198,90 @@ class FirstViewController: UIViewController {
     
     
     //MARK:闭包
+    /// 语法：
+    /// { (parameters) -> returnType in
+    ///    statements
+    /// }
+    ///
+    /// 参数和返回值都写在大括号内。函数体部分由关键字 `in` 引入
+    ///
+    /// ps.如果可变参数不放在参数列表的最后一位的话，调用闭包时编译器将报错.
+    /// 
+    /// 所有的类型都可以被正确推断时，返回箭头（->）和参数外边的括号可以被省略:
+    /// reversedNames = names.sorted(by: { s1, s2 in return s1 > s2 } )
+    ///
+    /// 単表达式闭包隐式返回，可以通过省略`return`关键字来隐式返回単表达式的结果:
+    /// reversedNames = names.sorted(by: { s1, s2 in s1 > s2 } )
+    ///
+    /// 参数名称可以缩写为$0,$1,$2...当在闭包表达式中使用参数名称缩写时，可以在闭包定义中省略参数列表，
+    /// in 关键字同样可以省略:
+    /// reversedName = names.sorted(by: {$0 > $1})
+    ///
+    /// 运算符方法:
+    /// reversedName = names.sorted(by: >)
+    ///
+    ///
+    ///
+    ///
+    ///
     func block() {
-        // 排序
+        /// 排序
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+        //1 完整闭包语法
         _ = names.sorted(by: {(s1: String, s2: String) -> Bool in
             return s1 > s2
         })
+        //2 所有的类型都可以被正确推断时，返回箭头（->）和参数外边的括号可以被省略
+        _ = names.sorted(by: { s1, s2 in
+            return s1 > s2
+        })
+        //3 単表达式闭包隐式返回，可以通过省略`return`关键字来隐式返回単表达式的结果
+        _ = names.sorted(by: { s1, s2 in
+            s1 > s2
+        })
+        //4 参数名称缩写时可以省略 in 关键字
+        _ = names.sorted(by: { $0 > $1 })
+        //5 尾随闭包写法:
+        _ = names.sorted() { $0 > $1 }
+        _ = names.sorted { $0 > $1 } //当闭包表达式是函数或方法中的唯一参数时，你可以把 () 省略.
+        
         
         // 求和闭包
         let sum: (Int, Int) -> (Int) = { $0 + $1 }
         let calculateSUM = sum(10, 11)
         print(calculateSUM)
+    }
+    
+    /// 尾随闭包：
+    /// 如果必须要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用尾随闭包来增强函数的可读性。
+    /// 尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持 将其作为最后一个参数调用。
+    ///
+    
+    /*
+    func someFunctionThatTakesAClosure(closure: ()->Void) {
+        /*函数主体部分*/
+    }
+    func someFunctionThatTakesAClosureTest() {
+        // 不使用尾随闭包进行函数调用的情况
+        someFunctionThatTakesAClosure(closure: { /*闭包主体部分*/ }) {
+            
+        }
+        // 使用尾随闭包进行函数调用
+        someFunctionThatTakesAClosure {
+            
+        }
+    }
+    */
+    
+    func zd_clousure() {
+        // map函数后带的就是一个尾随闭包，因为其只有闭包这一个参数，所以省略了（）
+        let numberArr = [16, 58, 510]
+        _ = numberArr.map { (number) -> String in
+            // 闭包或者函数的参数总是常量,需要把其转换成变量
+            let tempValue = number + 1
+            let temp = "\(tempValue)"
+            return temp
+        }
     }
     
     

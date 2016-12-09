@@ -13,6 +13,7 @@ print(arr)
 print(newArr)
 let createArray: Array = [Any](repeatElement("10", count: 5))
 /// 获取实例的类型
+//3.0 之前的方法：arr.dynamicType
 let _type = type(of: arr)
 let name = String(describing: UIView())
 
