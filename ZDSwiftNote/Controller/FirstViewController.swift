@@ -228,6 +228,12 @@ class FirstViewController: UIViewController {
         /// 排序
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
         //1 完整闭包语法
+        /**
+         闭包的函数体部分由关键字`in`引入。该关键字表示闭包的参数和返回值类型定义已经完成，闭包函数体即将开始。
+        { (parameters) -> returnType in
+            statements //函数体
+        }
+        */
         _ = names.sorted(by: {(s1: String, s2: String) -> Bool in
             return s1 > s2
         })
@@ -239,41 +245,48 @@ class FirstViewController: UIViewController {
         _ = names.sorted(by: { s1, s2 in
             s1 > s2
         })
-        //4 参数名称缩写时可以省略 in 关键字
+        //4 参数名称缩写时可以省略 `in` 关键字
         _ = names.sorted(by: { $0 > $1 })
-        //5 尾随闭包写法:
+        //5 尾随闭包写法,参数标签`by:`可以被省略掉:
         _ = names.sorted() { $0 > $1 }
-        _ = names.sorted { $0 > $1 } //当闭包表达式是函数或方法中的唯一参数时，你可以把 () 省略.
+        //6 当闭包表达式是函数或方法中的唯一参数时，你可以把 () 省略.
+        _ = names.sorted { $0 > $1 }
         
         
         // 求和闭包
         let sum: (Int, Int) -> (Int) = { $0 + $1 }
         let calculateSUM = sum(10, 11)
         print(calculateSUM)
+        
+        _ = sumNumber { (a, b) -> Int in
+            let c = a + b
+            print("\(c)")
+            return a + b
+        }
     }
     
     /// 尾随闭包：
     /// 如果必须要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用尾随闭包来增强函数的可读性。
-    /// 尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持 将其作为最后一个参数调用。
-    ///
+    /// 尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持将其作为最后一个参数调用。
+    /// 在使用尾随闭包时，不用写出它的参数标签。
     
     /*
     func someFunctionThatTakesAClosure(closure: ()->Void) {
         /*函数主体部分*/
     }
     func someFunctionThatTakesAClosureTest() {
-        // 不使用尾随闭包进行函数调用的情况
+        // 不使用尾随闭包进行函数调用的情况(闭包在小括号里面)
         someFunctionThatTakesAClosure(closure: { /*闭包主体部分*/ }) {
             
         }
-        // 使用尾随闭包进行函数调用
-        someFunctionThatTakesAClosure {
+        // 使用尾随闭包进行函数调用(闭包在小括号外面,并且省略了`closure`参数标签)
+        someFunctionThatTakesAClosure() {
             
         }
     }
     */
     
-    func zd_clousure() {
+    private func zd_clousure() {
         // map函数后带的就是一个尾随闭包，因为其只有闭包这一个参数，所以省略了（）
         let numberArr = [16, 58, 510]
         _ = numberArr.map { (number) -> String in
@@ -284,6 +297,9 @@ class FirstViewController: UIViewController {
         }
     }
     
+    private func sumNumber(numbers: (Int, Int) -> Int) -> Int {
+        return numbers(4, 7)
+    }
     
     
     //MARK: 判断系统版本
