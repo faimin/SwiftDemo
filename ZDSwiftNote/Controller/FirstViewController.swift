@@ -221,7 +221,7 @@ class FirstViewController: UIViewController {
     /// reversedName = names.sorted(by: >)
     ///
     ///
-    ///
+    /// 将一个闭包标记为 @escaping 意味着你必须在闭包中显示的引用`self`
     ///
     ///
     func block() {
@@ -349,6 +349,17 @@ func + (left: Vector2D, right: Vector2D) -> Vector2D {
     return Vector2D(x: left.x + right.x, y: left.y + right.y)
 }
 
+// 要实现前缀或者后缀运算符，需要在声明运算符函数的时候在`func`关键字之前指定`prefix`或者`postfix`修饰符
+// swift3.0从++的实现到inout和defer的小细节：http://ios.jobbole.com/92852/
+// Swift 中 struct 是值类型的。何为值，值是不能改变的，是immutable的，任何对值的修改其实就是新构造了一个来替换原来的。这里的inout也是如此，并不是传了地址进来，而是在这里构造了一个新的结构体，当函数结束时会复制回去替换原来的结构体。
+// 这里defer代码块会被压入栈中，函数结束时执行。到底啥时候执行呢？是在return后执行，如果return调用了其他函数，这个函数会在defer代码块执行之前被执行。
+@discardableResult
+postfix func ++(x: inout Int) -> Int {
+    defer {
+        x += 1
+    }
+    return x
+}
 
 
 

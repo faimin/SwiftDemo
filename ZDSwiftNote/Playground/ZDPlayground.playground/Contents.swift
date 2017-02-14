@@ -36,7 +36,7 @@ let calculateSUM = sum(10, 11)
 print(calculateSUM)
 
 
-///
+/// 扩展
 class User {
     private var name = "private name"
 }
@@ -46,3 +46,25 @@ extension User {
         return name
     }
 }
+
+
+// 操作符
+// http://ios.jobbole.com/92852/
+@discardableResult
+postfix func ++(x: inout Int) -> Int {
+    defer {
+        x += 1
+    }
+    return x
+}
+
+@discardableResult
+prefix func ++(x: inout Int) -> Int {
+    x += 1
+    return x
+}
+
+var i1 = 2, i2 = 2
+let j1 = i1++
+let j2 = ++i2
+
