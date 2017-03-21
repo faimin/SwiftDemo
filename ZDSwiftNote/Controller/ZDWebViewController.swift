@@ -66,13 +66,13 @@ class ZDWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print(navigationAction.request.url?.absoluteString)
+        print(navigationAction.request.url?.absoluteString ?? "navigationAction")
         //允许跳转
         decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        print(navigationResponse.response.url?.absoluteString)
+        print(navigationResponse.response.url?.absoluteString ?? "navigationResponse")
         //允许跳转
         decisionHandler(WKNavigationResponsePolicy.allow)
     }

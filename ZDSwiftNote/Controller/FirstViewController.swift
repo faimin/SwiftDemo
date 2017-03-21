@@ -68,6 +68,11 @@ class FirstViewController: UIViewController {
     }
     
 ///////////=================================================
+    //MARK: 打印类型
+    private func printType(_ value: Any) {
+        let type = type(of: value)
+        print(type)
+    }
     
     //MARK:String字符串
     func stringStudy() {

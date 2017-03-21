@@ -14,7 +14,7 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
         // Do any additional setup after loading the view.
-        
+
         setupButton()
     }
 
@@ -22,20 +22,20 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    public func setupButton() -> Void {
+
+    func setupButton() -> Void {
         let button: UIButton = UIButton(type: .detailDisclosure)
         button.frame = CGRect(x: 50, y: 150, width: 100, height: 30)
         button.titleLabel?.text = "show tableView"
         button.addTarget(self, action: #selector(showTableView), for: .touchUpInside)
         self.view.addSubview(button)
-        
+
     }
 
-    @objc private func showTableView() {
+    func showTableView() {
         self.navigationController?.pushViewController(TableController(), animated: true)
     }
-    
+
     /*
     // MARK: - Navigation
 
