@@ -10,12 +10,26 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    let kScreenSize = UIScreen.main.bounds.size
+    
+    let toolbar: UIToolbar = {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50))
+        toolbar.backgroundColor = UIColor.green
+        return toolbar
+    }()
+    
+    var textView: UITextView?
+    
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
         // Do any additional setup after loading the view.
 
         setupButton()
+        configInput()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,11 +45,46 @@ class SecondViewController: UIViewController {
         self.view.addSubview(button)
 
     }
+    
+    private func configInput() {
+        textView = UITextView(frame: CGRect(x: 0, y: 0, width: textField.bounds.size.width, height: textField.bounds.size.height))
+        textView!.backgroundColor = UIColor.purple
+        textView?.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        
+        let btnLeft = (textView?.frame.origin.x)! + 10
+        let btnWidth = kScreenSize.width - btnLeft - 10
+        
+        let sendBtn = UIButton(frame: CGRect(x: btnLeft, y: 10, width: btnWidth, height: 40))
+        sendBtn.backgroundColor = UIColor.red
+        sendBtn.setTitle("发送", for: UIControlState.normal)
+        sendBtn.addTarget(self, action: #selector(handleSend(sender:)), for: .touchUpInside)
+        
+        let inputItem = UIBarButtonItem(customView: textView!)
+        let sendItem = UIBarButtonItem(customView: sendBtn)
+        
+        toolbar.items = [inputItem, sendItem]
+        
+        textField.inputAccessoryView = toolbar
+    }
 
     func showTableView() {
         self.navigationController?.pushViewController(TableController(), animated: true)
     }
 
+    @objc private func handleSend(sender: UIButton) {
+        sendText(sender)
+    }
+    
+    @IBAction func sendText(_ sender: UIButton) {
+        guard !(textView?.text.isEmpty)! else {
+            return
+        }
+        
+        textField.resignFirstResponder()
+        print(textField.text ?? "空字符串")
+    }
+    
+    
     /*
     // MARK: - Navigation
 
