@@ -135,7 +135,12 @@ class FirstViewController: UIViewController {
             print(greenting)
         }
         else {
-            greenting = "hello,\(option)"
+            //greenting = "hello,\(option)" // warning
+            // 以下为消除警告的解决办法
+            // 前2种是Xcode提示的修复方法，第三种来自网络
+            //greenting = "hello,\(String(describing: option))"
+            //greenting = "hello,\(option ?? "默认值")"
+            greenting = "hello, \(option as String?)"
             print(greenting)
         }
         
@@ -152,7 +157,7 @@ class FirstViewController: UIViewController {
     //MARK:运算符
     /// 运算符
     func oerators() {
-        //http://www.tuicool.com/articles/2u2Qzu2
+        // http://www.tuicool.com/articles/2u2Qzu2
         var str1: String
         var str2: String?
         str1 = str2 ?? "ios"
