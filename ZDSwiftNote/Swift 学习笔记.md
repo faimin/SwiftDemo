@@ -397,6 +397,16 @@ print(counter.count)                    // 6
 
 + 要实现前缀或者后缀运算符，需要在声明运算符函数的时候在`func`关键字之前指定`prefix`或者`postfix`修饰符。
 
+
+## 解惑
+
+#### 1. `lazy`修饰的实例为什么不能用`lazy let`？
+
+在 Swift 里你不能创建 `lazy let` 实例属性，这是由 `lazy` 的具体实现细节决定的：它在没有值的情况下以某种方式被初始化，然后在被访问时改变自己的值，这就要求该属性是可变的。因此无法实现一个使用时才会被计算的常量。
+
+> 既然说到了`let`，顺便说一条比较有意思的特性： **被声明在全局作用域下 或者 被声明为一个类型属性（即声明为`static let`）的常量，是自动具有惰性(`lazy`)的，而且还是线程安全的。**
+
+
 ## 重要概念：
 
 + **写时复制**: Swift 中的“写时复制”是指，值类型只在被改动前进行复制。传统意义上的值类型会在被传递或者被赋值给其他变量时就发生复制行为，但是这将会带来极大的，也是不必要的性能损耗。写时复制将在值被传递和赋值给变量时首先检查其引用计数，如果引用计数为 1 (唯一引用)，那么意味着并没有其他变量持有该值，对当前值的复制也就可以完全避免，以此在保持值类型不可变性的优良特性的同时，保证使用效率。`Swift` 中像是 `Array` 和 `Dictionary` 这样的类型都是值类型，但是底层实现确是引用类型，它们都利用了写时复制的技术来保证效率。
@@ -405,4 +415,16 @@ print(counter.count)                    // 6
 
 > 以上内容全部摘自[The Swift Programming Language 中文版](http://wiki.jikexueyuan.com/project/swift/)
 
+## 资料
 
+- [Swift 烧脑体操（一） - Optional 的嵌套](http://blog.devtang.com/2016/02/27/swift-gym-1-nested-optional/)
+- [Swift 烧脑体操（二） - 函数的参数](http://blog.devtang.com/2016/02/27/swift-gym-2-function-argument/)
+- [Swift 烧脑体操（三） - 高阶函数](http://blog.devtang.com/2016/02/27/swift-gym-3-higher-order-function/)
+- [Swift 烧脑体操（四） - map 和 flatMap](http://blog.devtang.com/2016/03/05/swift-gym-4-map-and-flatmap/)
+- [Swift 烧脑体操（五）- Monad](http://blog.devtang.com/2016/04/05/swift-gym-5-monad)
+- [“懒”点儿好](http://swift.gg/2016/03/25/being-lazy/)
+- [Swift2.0：理解flatMap](http://swift.gg/2015/08/06/swift-2-flatmap/)
+- [谈谈 Swift 中的 map 和 FlatMap 第二篇 - 另一层思维方式](http://www.swiftcafe.io/2016/03/31/about-map-2)
+- [Swift中枚举高级用法与实践](http://swift.gg/2015/11/20/advanced-practical-enum-examples/)
+- [Unowned 还是 Weak？生命周期和性能对比](http://swift.gg/2017/05/16/unowned-or-weak-lifetime-and-performance/)
+- [所有权宣言 - Swift 官方文章 Ownership Manifesto 译文评注版](https://onevcat.com/2017/02/ownership/)
