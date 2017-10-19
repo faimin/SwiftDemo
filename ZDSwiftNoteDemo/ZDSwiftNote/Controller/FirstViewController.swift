@@ -63,15 +63,15 @@ class FirstViewController: UIViewController {
         self.view.addSubview(button)
     }
     
-    func pushToNextController(button: UIButton) {
+    @objc func pushToNextController(button: UIButton) {
         self.navigationController?.pushViewController(SecondViewController(), animated: true)
     }
     
 ///////////=================================================
     //MARK: 打印类型
     private func printType(_ value: Any) {
-        let type = type(of: value)
-        print(type)
+        let typeName = type(of: value)
+        print(typeName)
     }
     
     //MARK:String字符串
@@ -118,6 +118,29 @@ class FirstViewController: UIViewController {
     print(className)
 #endif
         
+        // Swift 4 可以把字符串写在一对 """ 中，这样字符串就可以写成多行。
+        _ = """
+            This is a multi-line string.
+            You don't have to escape "quotes" in here.
+            String interpolation works as expected: 2 + 3 = \(2 + 3)
+            The position of the closing delimiter
+            controls whitespace stripping.
+        """
+        
+        // 当然，也可以使用 \ 来转义换行
+        _ = """
+            To omit a line break, \
+            add a backslash at the end of a line.
+        """
+        
+        let values = "one, two, three..."
+        var i = values.startIndex
+        while let comma = values[i...].index(of: ",") {
+            if values[i..<comma] == "two" {
+                print("find it!")
+            }
+            i = values.index(after: comma)
+        }
     }
 
     //MARK:Array && Dictionary字典和数组

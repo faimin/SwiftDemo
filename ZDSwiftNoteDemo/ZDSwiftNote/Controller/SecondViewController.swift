@@ -41,7 +41,7 @@ class SecondViewController: UIViewController {
         let button: UIButton = UIButton(type: .detailDisclosure)
         button.frame = CGRect(x: 50, y: 150, width: 100, height: 30)
         button.titleLabel?.text = "show tableView"
-        button.addTarget(self, action: #selector(showTableView), for: .touchUpInside)
+        button.addTarget(self, action: #selector(SecondViewController.showTableView), for: .touchUpInside)
         self.view.addSubview(button)
 
     }
@@ -67,7 +67,7 @@ class SecondViewController: UIViewController {
         textField.inputAccessoryView = toolbar
     }
 
-    func showTableView() {
+    @objc func showTableView() {
         self.navigationController?.pushViewController(TableController(), animated: true)
     }
 

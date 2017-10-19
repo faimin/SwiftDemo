@@ -35,6 +35,42 @@ let sum: (Int, Int) -> (Int) = {
 let calculateSUM = sum(10, 11)
 print(calculateSUM)
 
+// 字符串
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbers[5...] // instead of numbers[5..<numbers.endIndex]
+
+// Swift 4 可以把字符串写在一对 """ 中，这样字符串就可以写成多行。
+_ = """
+    This is a multi-line string.
+    You don't have to escape "quotes" in here.
+    String interpolation works as expected: 2 + 3 = \(2 + 3)
+    The position of the closing delimiter
+    controls whitespace stripping.
+"""
+
+// 当然，也可以使用 \ 来转义换行
+_ = """
+    To omit a line break, \
+    add a backslash at the end of a line.
+"""
+
+let values = "one,two,three..."
+var i = values.startIndex
+while let comma = values[i...].index(of: ",") {
+    if values[i..<comma] == "two" {
+        print("\nfind it!\n")
+    }
+    i = values.index(after: comma)
+}
+
+/// 字典
+typealias Name = (firstName: String, lastName: String) // 元组
+let names: [Name] = [("Bart", "den Hollander"), ("A", "B"), ("C", "D")]
+names.forEach { (nameTuple) in
+    print(nameTuple.firstName)
+    let (first, last) = nameTuple
+    print(first, last)
+}
 
 /// 扩展
 class User {
