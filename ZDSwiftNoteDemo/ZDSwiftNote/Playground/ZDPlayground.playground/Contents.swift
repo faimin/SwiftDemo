@@ -107,7 +107,7 @@ let j2 = ++i2
 // 处理空值
 // https://useyourloaf.com/blog/swift-non-nil-values-in-an-array-of-optionals/
 let scores = [1, 5, 8, 10, nil, 7]
-for score in scores.flatMap({$0}) {
+for score in scores.compactMap({$0}) {
     print(score)
 }
 for case .some(let score) in scores {
