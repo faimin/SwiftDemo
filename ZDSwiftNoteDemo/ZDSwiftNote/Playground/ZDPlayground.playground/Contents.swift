@@ -1,6 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
+import Foundation
 
 var str = "Hello, playground"
 
@@ -119,4 +120,17 @@ for case let score? in scores {
 for case let score? in scores where score > 5 {
     print(score)
 }
+
+//MARK: - URL Extension
+extension URL: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self = URL(string: value)!
+    }
+}
+let url: URL = "www.google.com"
+
+//https://developer.apple.com/documentation/swift/2885064-type
+let typeValue = type(of: url)
+print("\(typeValue)")
+
 
