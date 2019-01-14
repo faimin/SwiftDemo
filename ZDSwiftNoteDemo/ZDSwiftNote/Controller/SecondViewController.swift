@@ -2,7 +2,7 @@
 //  SecondViewController
 //  ZDSwiftNote
 //
-//  Created by 符现超 on 2016/10/27.
+//  Created by Zero.D.Saber on 2016/10/27.
 //  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
@@ -49,14 +49,14 @@ class SecondViewController: UIViewController {
     private func configInput() {
         textView = UITextView(frame: CGRect(x: 0, y: 0, width: textField.bounds.size.width, height: textField.bounds.size.height))
         textView!.backgroundColor = UIColor.purple
-        textView?.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        textView?.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         
         let btnLeft = (textView?.frame.origin.x)! + 10
         let btnWidth = kScreenSize.width - btnLeft - 10
         
         let sendBtn = UIButton(frame: CGRect(x: btnLeft, y: 10, width: btnWidth, height: 40))
         sendBtn.backgroundColor = UIColor.red
-        sendBtn.setTitle("发送", for: UIControlState.normal)
+        sendBtn.setTitle("发送", for: UIControl.State.normal)
         sendBtn.addTarget(self, action: #selector(handleSend(sender:)), for: .touchUpInside)
         
         let inputItem = UIBarButtonItem(customView: textView!)

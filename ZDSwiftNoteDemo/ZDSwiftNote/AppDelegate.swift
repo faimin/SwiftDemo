@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ZDSwiftNote
 //
-//  Created by 符现超 on 2016/10/27.
+//  Created by Zero.D.Saber on 2016/10/27.
 //  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
