@@ -57,14 +57,14 @@ _ = """
 
 let values = "one,two,three..."
 var i = values.startIndex
-while let comma = values[i...].index(of: ",") {
+while let comma = values[i...].firstIndex(of: ",") {
     if values[i..<comma] == "two" {
         print("\nfind it!\n")
     }
     i = values.index(after: comma)
 }
 
-/// 字典
+//MARK: - 字典
 typealias Name = (firstName: String, lastName: String) // 元组
 let names: [Name] = [("Bart", "den Hollander"), ("A", "B"), ("C", "D")]
 names.forEach { (nameTuple) in
@@ -73,7 +73,7 @@ names.forEach { (nameTuple) in
     print(first, last)
 }
 
-/// 扩展
+//MARK: - 扩展
 class User {
     private var name = "private name"
 }
@@ -85,7 +85,7 @@ extension User {
 }
 
 
-// 操作符
+//MARK: - 操作符
 // http://ios.jobbole.com/92852/
 @discardableResult
 postfix func ++(x: inout Int) -> Int {
@@ -105,7 +105,7 @@ var i1 = 2, i2 = 2
 let j1 = i1++
 let j2 = ++i2
 
-// 处理空值
+//MARK: - 处理空值
 // https://useyourloaf.com/blog/swift-non-nil-values-in-an-array-of-optionals/
 let scores = [1, 5, 8, 10, nil, 7]
 for score in scores.compactMap({$0}) {
@@ -132,5 +132,49 @@ let url: URL = "www.google.com"
 //https://developer.apple.com/documentation/swift/2885064-type
 let typeValue = type(of: url)
 print("\(typeValue)")
+
+//https://www.objc.io/blog/2019/01/22/non-empty-optionals/
+extension Optional where Wrapped: Collection {
+    var nonEmpty: Wrapped? {
+        return self?.isEmpty == true ? nil : self
+    }
+}
+
+
+//MARK: - 测试1
+protocol Drawing {
+    func render()
+    func circle()
+}
+
+extension Drawing {
+    func circle() {
+        print("protocol")
+    }
+    func render() {
+        circle()
+    }
+}
+
+class SVG: Drawing {
+    func circle() {
+        print("class")
+        print("svg = ", Unmanaged.passRetained(self).toOpaque())
+    }
+}
+
+SVG().render() // output is `protocol` or `class`
+
+//MARK: - 测试2
+var dictWithNils: [String: Int?] = [
+    "one": 1,
+    "two": 2,
+    "none": nil
+]
+
+print(dictWithNils.count)
+dictWithNils["two"] = nil
+dictWithNils["none"] = nil
+print(dictWithNils.count) // output is `1`
 
 
